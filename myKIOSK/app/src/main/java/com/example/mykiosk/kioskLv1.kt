@@ -1,4 +1,6 @@
 package com.example.mykiosk
+import android.util.Log
+
 //[서브웨이 메뉴] 단계에서 0을 누르지 않으면 계속 반복
 //제품 1개만 받는다. 나중에 메소드, 클래스로 깔끔히 나누면 이 루틴을 반복해서 결제 결정을 내리게 하면 된다.
 //lv 1 구현 끝!
@@ -31,6 +33,7 @@ fun main(){
                 "2" -> price += 5500
                 "3" -> price += 4900
                 "0" -> continue
+
             }
         }
         else if(getIntro == "2"){

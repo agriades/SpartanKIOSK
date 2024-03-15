@@ -54,7 +54,7 @@ open class Edible{
         receiptLines.forEach {println(it)}
     }
     fun bye(){
-        println("===SpartanSUBWAY lv 3.===")
+        println("===SpartanSUBWAY lv 4.===")
     }
 }
 

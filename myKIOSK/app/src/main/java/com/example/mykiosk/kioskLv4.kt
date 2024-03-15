@@ -72,44 +72,56 @@ class Sides: Edible(){
 }
 
 fun main() {
-    val subway = Edible()
-    val sandwiches = Sandwiches()
-    val drinks = Drinks()
-    val sides = Sides()
+    try{ //when문 안에 넣으니까 오류가 엄청나더라.
+        val subway = Edible()
+        val sandwiches = Sandwiches()
+        val drinks = Drinks()
+        val sides = Sides()
 
-    var isBuying = true
-    var price: Int = 0
-    var receiptLines = listOf<String>()
+        var isBuying = true
+        var price: Int = 0
+        var receiptLines = listOf<String>()
 
-    subway.hello()
-    while (isBuying) {
-        when (readln()) {
-            "1" -> {
-                sandwiches.desc();
-                val sandwich = sandwiches.addCart();
-                receiptLines += sandwich.first; price += sandwich.second
+        subway.hello()
+        while (isBuying) {
+            when (readln()) {
+                "1" -> {
+                    sandwiches.desc()
+                    val sandwich = sandwiches.addCart()
+                    receiptLines += sandwich.first
+                    price += sandwich.second
+                }
+
+                "2" -> {
+                    drinks.desc()
+                    val drink = drinks.addCart()
+                    receiptLines += drink.first
+                    price += drink.second
+                }
+
+                "3" -> {
+                    sides.desc()
+                    val side = sides.addCart()
+                    receiptLines += side.first
+                    price += side.second
+                }
+
+                "0" -> {
+                    println("종료합니다.")
+                    break
+                }
+
+                "-1" -> {
+                    subway.payment(price)
+                    subway.receipt(receiptLines)
+                    break
+                }
             }
-
-            "2" -> {
-                drinks.desc();
-                val drink = drinks.addCart();
-                receiptLines += drink.first; price += drink.second
-            }
-
-            "3" -> {
-                sides.desc();
-                val side = sides.addCart();
-                receiptLines += side.first; price += side.second
-            }
-
-            "0" -> {
-                println("종료합니다."); break
-            }
-
-            "-1" -> {
-                subway.payment(price); subway.receipt(receiptLines); break
-            }
+            subway.helloAgain()
         }
-        subway.helloAgain()
     }
+    catch(e: ArrayIndexOutOfBoundsException){
+        println("잘못된 값을 입력했어요.")
+    }
+
 }
